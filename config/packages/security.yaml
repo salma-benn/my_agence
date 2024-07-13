@@ -1,7 +1,9 @@
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User: 'auto'
+        Symfony\Component\Security\Core\User\InMemoryUser:
+            algorithm: plaintext
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -9,13 +11,24 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+
+        # Memory User Provider
+        backend_users:
+            memory:
+                users:
+                    test@test.test: { password: 'test', roles: [ 'ROLE_ADMIN' ] }
+        # Chain User Provider
+        all_users:
+            chain:
+                providers: ['backend_users', 'app_user_provider']
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: app_user_provider
+            provider: all_users
             form_login:
                 login_path: app_login
                 check_path: app_login
