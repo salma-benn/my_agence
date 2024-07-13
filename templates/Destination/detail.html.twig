@@ -1,0 +1,20 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ destination.name }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="w-50 border p-4 rounded shadow">
+        <h1 class="text-center">{{ destination.name }}</h1>
+        <img src="{{ asset(destination.picture) }}" alt="{{ destination.name }}">
+        <p>{{ destination.description }}</p>
+        <p> price : {{ destination.price }}</p>
+        <p>duration :{{ destination.duration }}</p>
+        <a href="{{ path('destination') }}" class="btn btn-primary btn-block">Back to Destinations</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

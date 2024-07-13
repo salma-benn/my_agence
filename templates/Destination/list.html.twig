@@ -1,0 +1,19 @@
+{# templates/destination/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Destinations{% endblock %}
+
+{% block body %}
+    <h1>Destination list </h1>
+    <div class="destinations">
+        {% for destination in destinations %}
+            <div class="destination">
+                <img src="{{ asset(destination.picture) }}" alt="{{ destination.name }}">
+                <h2>{{ destination.name }}</h2>
+                <p>{{ destination.description }}</p>
+                <a href="{{ path('destination_detail', { 'id': destination.id }) }}">Learn more</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
