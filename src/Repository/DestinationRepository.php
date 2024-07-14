@@ -16,28 +16,10 @@ class DestinationRepository extends ServiceEntityRepository
         parent::__construct($registry, Destination::class);
     }
 
-    //    /**
-    //     * @return Destination[] Returns an array of Destination objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('d')
-    //            ->andWhere('d.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('d.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+   public function getDestinations(){
+       $query =  $this->createQueryBuilder('d')
+           ->select('d.id','d.name','d.description','d.picture','d.price','d.duration');
+       return $query->getQuery()->getResult(2);
 
-    //    public function findOneBySomeField($value): ?Destination
-    //    {
-    //        return $this->createQueryBuilder('d')
-    //            ->andWhere('d.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+   }
 }
