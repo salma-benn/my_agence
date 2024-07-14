@@ -1,0 +1,14 @@
+vich_uploader:
+  db_driver: orm
+
+  metadata:
+    type: attribute
+
+  mappings:
+    destinations:
+      inject_on_load: true # Here was the culprit !
+      uri_prefix: /images
+      upload_destination: '%kernel.project_dir%/public/images'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+      delete_on_update: true
+      delete_on_remove: true

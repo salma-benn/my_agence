@@ -1,0 +1,43 @@
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="w-50 border p-4 rounded shadow">
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+        <div class="form-group">
+            {{ form_label(form.name, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.name, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.description, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.description, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.price, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.price, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.duration, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.duration, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.imageFile, null, {'label_attr': {'class': 'form-label'}}) }}
+            <div>
+                {% if form.imageFile.vars.value is not empty %}
+                    <img style="width: 50%" src="{{ asset("images/"~form.imageFile.vars.value.file.filename) }}"
+                         alt="{{ destination.name }}">
+                {% endif %}
+            </div>
+            {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.imageFile, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        {{ form_rest(form) }}
+
+        <div class="form-btn">
+            <a style="margin-right: 10%" href="{{ path('app_admin_destination') }}" class="btn btn-lg btn-primary">back to list</a>
+            <button class="btn btn-lg btn-success">{{ button_label|default('Save') }}</button>
+        </div>
+{{ form_end(form) }}
+    </div>
+</div>

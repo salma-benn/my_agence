@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Destination list{% endblock %}
+
+{% block body %}
+    <h1>Destination list</h1>
+    <div class="btn-style-list">
+        <a href="{{ path('destinations_new') }}" class="btn btn-success">Create new</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Picture</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for destination in destinations %}
+            <tr>
+                <td width="5%">{{ destination.id }}</td>
+                <td width="10%">{{ destination.name }}</td>
+                <td width="30%">{{ destination.description }}</td>
+                <td width="10%">{{ destination.price }} EUR</td>
+                <td width="10%">{{ destination.duration }} Days</td>
+                <td>
+                    <img style="width: 50%" src="{{ vich_uploader_asset(destination,'imageFile') }}" alt="{{ destination.name }}">
+                </td>
+                <td width="20%">
+                    <a href="{{ path('destinations_show', {'id': destination.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('destinations_edit', {'id': destination.id}) }}" class="btn btn-primary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

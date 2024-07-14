@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Destination{% endblock %}
+
+{% block body %}
+    <h1>Detail Destination : <span style="color: midnightblue"> {{ destination.name }} </span></h1>
+    <div class="btn-style-list-center">
+        <a href="{{ path('app_admin_destination') }}" class="btn btn-primary margin-btn">Back to list</a>
+
+        <a href="{{ path('destinations_edit', {'id': destination.id}) }}" class="btn btn-success margin-btn">Edit</a>
+
+        {{ include('Admin/destination/delete_form.html.twig') }}
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ destination.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ destination.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ destination.description }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ destination.price }}</td>
+        </tr>
+        <tr>
+            <th>Duration</th>
+            <td>{{ destination.duration }}</td>
+        </tr>
+        <tr>
+            <th>Picture</th>
+            <td>
+                <img style="width: 50%" src="{{ vich_uploader_asset(destination,'imageFile') }}"
+                     alt="{{ destination.name }}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

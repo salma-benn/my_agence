@@ -4,8 +4,14 @@ namespace App\Entity;
 
 use App\Repository\DestinationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DestinationRepository::class)]
+#[Vich\Uploadable]
+
 class Destination
 {
     #[ORM\Id]
@@ -14,18 +20,28 @@ class Destination
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?float $price = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?int $duration = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\File(
+        mimeTypes: ["image/png","image/jpeg","image/jpg","image/pjpeg"]
+    )]
+    #[Vich\UploadableField(mapping: 'destinations', fileNameProperty: 'picture')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255,nullable: true)]
     private ?string $picture = null;
 
     public function getId(): ?int
@@ -86,10 +102,21 @@ class Destination
         return $this->picture;
     }
 
-    public function setPicture(string $picture): static
+    public function setPicture(?string $picture): static
     {
         $this->picture = $picture;
 
         return $this;
+    }
+    public function setImageFile(?File $imageFile = null): static
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 }

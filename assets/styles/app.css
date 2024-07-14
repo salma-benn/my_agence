@@ -1,3 +1,26 @@
 body {
     background-color: skyblue;
 }
+.btn-style-list{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.btn-style-list-center{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.form-btn{
+    display: flex;
+    justify-content: center;
+}
+.table{
+    margin-left: 5%;
+    width: 90%;
+    border-left: wheat 1px solid;
+    border-right: wheat 1px solid;
+}
+.margin-btn{
+    margin-right: 2%;
+}
