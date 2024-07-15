@@ -59,7 +59,7 @@ class DestinationController extends AbstractController
         $form = $this->createForm(DestinationType::class, $destination);
         $form->handleRequest($request);
         $picture = $destination->getPicture();
-        $destination->setPicture(null);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($destination);
             $entityManager->flush();

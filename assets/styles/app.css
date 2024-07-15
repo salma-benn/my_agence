@@ -24,3 +24,7 @@ body {
 .margin-btn{
     margin-right: 2%;
 }
+.vich-image a img{
+    margin-top: 5%;
+    width: 100%;
+}

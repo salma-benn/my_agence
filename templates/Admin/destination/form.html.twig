@@ -23,12 +23,6 @@
         </div>
         <div class="form-group">
             {{ form_label(form.imageFile, null, {'label_attr': {'class': 'form-label'}}) }}
-            <div>
-                {% if form.imageFile.vars.value is not empty %}
-                    <img style="width: 50%" src="{{ asset("images/"~form.imageFile.vars.value.file.filename) }}"
-                         alt="{{ destination.name }}">
-                {% endif %}
-            </div>
             {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
             {{ form_errors(form.imageFile, {'attr': {'class': 'text-danger'}}) }}
         </div>

@@ -44,6 +44,9 @@ class Destination
     #[ORM\Column(length: 255,nullable: true)]
     private ?string $picture = null;
 
+    #[ORM\Column]
+    private \DateTimeImmutable $updatedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,12 +114,24 @@ class Destination
     public function setImageFile(?File $imageFile = null): static
     {
         $this->imageFile = $imageFile;
-
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
         return $this;
     }
 
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function getUpdatedAt(): \DateTimeImmutable
+    {
+        return $this->updatedAt;
     }
 }

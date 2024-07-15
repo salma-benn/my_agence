@@ -31,9 +31,10 @@
                 <td>
                     <img style="width: 50%" src="{{ vich_uploader_asset(destination,'imageFile') }}" alt="{{ destination.name }}">
                 </td>
-                <td width="20%">
+                <td width="20%" style="display: flex">
                     <a href="{{ path('destinations_show', {'id': destination.id}) }}" class="btn btn-info">show</a>
                     <a href="{{ path('destinations_edit', {'id': destination.id}) }}" class="btn btn-primary">edit</a>
+                    {{ include('Admin/destination/delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
