@@ -14,9 +14,6 @@ project symfony6
 
 2 - Migration DataBase:
 ~~~
-    php bin/console make:migration 
-~~~
-~~~
     php bin/console doctrine:migrations:migrate
 ~~~
 
