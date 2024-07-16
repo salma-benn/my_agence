@@ -11,6 +11,11 @@ body {
     justify-content: center;
     padding: 20px;
 }
+.logout{
+    display: flex;
+    justify-content: right;
+    padding: 20px;
+}
 .form-btn{
     display: flex;
     justify-content: center;
@@ -27,4 +32,7 @@ body {
 .vich-image a img{
     margin-top: 5%;
     width: 100%;
+}
+.destination{
+    margin-bottom: 2%;
 }

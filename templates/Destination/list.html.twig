@@ -12,7 +12,7 @@
                 <img src="{{ vich_uploader_asset(destination,'imageFile') }}" alt="{{ destination.name }}">
                 <h2>{{ destination.name }}</h2>
                 <p>{{ destination.description }}</p>
-                <a href="{{ path('destination_detail', { 'id': destination.id }) }}">Learn more</a>
+                <a href="{{ path('destination_detail', { 'id': destination.id }) }}"  class="btn btn-primary ">Learn more</a>
             </div>
         {% endfor %}
     </div>

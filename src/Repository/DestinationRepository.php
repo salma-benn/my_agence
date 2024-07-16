@@ -20,7 +20,7 @@ class DestinationRepository extends ServiceEntityRepository
        $query =  $this->createQueryBuilder('d')
            ->select('d.id','d.name','d.description','d.picture','d.price')
            ->addSelect("CONCAT(d.duration, ' days') AS duration");
-       return $query->getQuery()->getResult(2);
+       return $query->getQuery()->getArrayResult();
 
    }
 }
